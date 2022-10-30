@@ -3,8 +3,18 @@
 
 int main() {
     std::cout << "chess app started\n";
-    sf::RenderWindow window(sf::VideoMode(200,100), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1024, 1024), "SFML works!");
     sf::CircleShape shape(100.f);
+
+    sf::Texture image;
+    // Image.loadFromFile
+    image.loadFromFile("images/Chess_Board_purp.svg.png");
+    // if (!image.loadFromFile("images/Chess_Board_purp.svg.png")) {
+    //     std::cout << "error";
+    // }
+
+    sf::Sprite sprite(image);
+        
 
     while (window.isOpen()) {
         sf::Event event;
@@ -14,9 +24,9 @@ int main() {
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(sprite);
         window.display();
-    }
+    } 
 
     std::cout << "chess app exited\n";
     return 0;
