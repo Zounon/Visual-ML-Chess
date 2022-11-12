@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include <iostream>
 
 int main() {
@@ -9,11 +10,20 @@ int main() {
     sf::Texture image;
     // Image.loadFromFile
     image.loadFromFile("images/Chess_Board_purp.svg.png");
+
+    sf::Texture pawnImg;
+    pawnImg.loadFromFile("images/chess_pieces.svg.png");
     // if (!image.loadFromFile("images/Chess_Board_purp.svg.png")) {
     //     std::cout << "error";
     // }
 
     sf::Sprite sprite(image);
+    sf::Sprite pawnSprite;
+
+
+    pawnSprite.setTexture(pawnImg);
+    pawnSprite.setTextureRect(sf::IntRect( 0, 0, 210, 210));
+    pawnSprite.setScale(0.6f, 0.6f);
         
 
     while (window.isOpen()) {
@@ -25,6 +35,7 @@ int main() {
 
         window.clear();
         window.draw(sprite);
+        window.draw(pawnSprite);
         window.display();
     } 
 
